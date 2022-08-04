@@ -1,0 +1,36 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" > 
+  <div class="part2-1-1">
+    <div id="font-size">
+      <h2>Full Name</h2>
+      <mat-form-field class="button1" appearance="outline">
+        <input class="button-size" matInput placeholder="" formControlName="fullname">
+        <mat-error>Enter FullName</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="font-size">
+      <h1>Email</h1>
+      <mat-form-field class="button1" appearance="outline" >
+        <input matInput placeholder="" formControlName="email">
+        <mat-error>Enter Email</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="font-size">
+      <h1>Password</h1>
+      <mat-form-field class="button1" appearance="outline" >
+        <input matInput placeholder="" formControlName="Password">
+        <mat-error>Enter Password</mat-error>
+      </mat-form-field>
+    </div>
+    <div id="font-size">
+      <h1>Mobile Number</h1>
+      <mat-form-field class="button1" appearance="outline" >
+        <input matInput placeholder="" formControlName="phoneNo">
+        <mat-error>Enter PhoneNo</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <div>
+      <button id="login-button" mat-flat-button color="warn">Signup</button>
+    </div>
+  </div>
+</form>

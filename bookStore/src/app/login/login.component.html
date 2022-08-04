@@ -1,0 +1,62 @@
+<div class="head" [style.background-color]="bcolor">
+  <div class="main" >
+    <div class="part1" >
+      <img src="../../assets/2766594@2x.png" alt="">
+      <p>ONLINE BOOK SHOPPING</p>
+    </div>
+    <div class="part2" >
+        <div class="part2-1" >
+          <div class="part2-1-1"> 
+            <h1 (click)="login()">LOGIN</h1>
+            <h2 (click)="register()">SIGNUP</h2>
+          </div>
+          
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="flag">
+              <h3>Email Id</h3>
+              <div id="font-size">
+                <mat-form-field class="button1" id="specific-border" appearance="outline">
+                  <input  matInput placeholder="Email Id" formControlName="email">
+                  <mat-error>Enter Email</mat-error>
+                </mat-form-field>
+              </div>
+              <h4>Password</h4>
+              <div id="font-size">
+                <mat-form-field class="button1" id="specific-border" appearance="outline">
+                  <input matInput placeholder="Password" formControlName="password">
+                  <mat-error>Enter Password</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="heading5">
+                <h5>Forgot Password?</h5>
+              </div>
+              <section>
+                <div class="example-button-row" >
+                  <button class="button" mat-flat-button >Login</button>
+                </div>
+              </section>
+              <h6>---------- OR ---------</h6>
+              <div class="bottom">
+                <section>
+                  <div class="example-button-row" >
+                    <button class="button2" color="primary" mat-flat-button >Facebook</button>
+                  </div>
+                </section>
+                <section>
+                  <div class="example-button-row" >
+                    <button class="button2-1" mat-flat-button >Google</button>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </form>
+          <div *ngIf="!flag">
+            <app-register></app-register>
+          </div> 
+          
+          
+        </div>
+
+    </div>
+</div>
+</div>

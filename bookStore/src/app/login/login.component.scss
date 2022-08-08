@@ -241,3 +241,42 @@ margin-top: 15px;
 .mat-focused .mat-icon {
     color: red;
 }
+
+// @media screen and (max-width: 1422px) {
+//     .part1,.part2,.head{
+//         width: 120%;
+//         margin-left: 0;
+//     }
+//     .button1,.button{
+//         width: 234px;
+//     }
+//     .button2-1,.button2{
+//         width: 110px;
+//     }
+// }
+
+@media screen and (max-width: 1000px) {
+    .part1,.part2,.head{
+        width: 100%;
+        margin-left: 0;
+    }
+    .button1,.button{
+        width: 100%;
+    }
+    .button2-1,.button2{
+        width: 80%;
+    }
+    h5,h6{
+        margin-left: 10px;
+        font-size: small;
+    }
+    h2{
+        margin-left: 10px;
+    }
+    .part2-1-1{
+        margin-right: 25%;
+    }
+    p{
+        font-size:10px;
+    }
+  }

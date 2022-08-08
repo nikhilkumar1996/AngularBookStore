@@ -14,7 +14,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
+import { WjCoreModule } from '@grapecity/wijmo.angular2.core';
+
+import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
+
+import { WjGaugeModule } from '@grapecity/wijmo.angular2.gauge';
+
+import { WjInputModule } from '@grapecity/wijmo.angular2.input';
+import { GetallbooksComponent } from './getallbooks/getallbooks.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +33,10 @@ import { DisplayBookComponent } from './display-book/display-book.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    DisplayBookComponent
+    BookDetailsComponent,
+    DisplayBookComponent,
+    GetallbooksComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +48,13 @@ import { DisplayBookComponent } from './display-book/display-book.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    WjCoreModule,
+    WjGridModule,
+    WjInputModule,
+    WjGaugeModule,
+    MatRadioModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

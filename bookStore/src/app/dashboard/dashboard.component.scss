@@ -64,6 +64,10 @@
     height: 20px;
     filter: invert(1);
   }
+  .books{
+    width: 70%;
+    min-height: 80vh;
+  }
   .account-icon{
     // border-left: 1px solid rgb(77, 3, 3);
     height: 55px;
@@ -90,3 +94,46 @@
     width: 70%;
     min-height: 80vh;
   }
+@media screen and (max-width: 1000px) {
+  .input-bar{
+    width: 60%;
+  }
+  // #input-bar{
+  //   margin-left: 1%;
+  // }
+  .main{
+    width: 100%;
+  }
+  .logo-search{
+    margin-left: -60%;
+  }
+}
+
+
+@media screen and (max-width: 1300px) {
+  // .input-bar{
+  //   width: 60%;
+  // }
+  // #input-bar{
+  //   margin-left: 1%;
+  // }
+  .logo-search{
+    margin-left: -60%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  // .input-bar{
+  //   width: 60%;
+  // }
+  // #input-bar{
+  //   margin-left: 1%;
+  // }
+  .logo-search{
+    margin-left: -60%;
+  }
+  .account-icon,.cart-icon{
+    margin-left: -5%;
+  }
+}
+

@@ -46,3 +46,12 @@ h1{
 #font-size{
     font-size: 10px ;
 }
+
+@media screen and (max-width: 1000px) {
+    .button1{
+        width: 100%;
+    }
+    #login-button{
+        width: 100%;
+    }
+}

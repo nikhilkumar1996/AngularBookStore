@@ -1,0 +1,56 @@
+<div class="main">
+    <div id="heading1">
+        <h1>Home</h1>
+        <h1>/Book(01)</h1>
+    </div>
+    <div class="box1" fxLayout="row" fxLayoutAlign="start start" *ngFor="let book of book_details">
+        <div id="box-1-1">
+           <img src="../../assets/book.png">
+        </div>
+        <div id="box-1-2">
+            <img src="../../assets/book.png">
+            <div >
+                <div *ngIf="flag" class="button1" (click)="addToCart(book._id)">
+                    <button mat-flat-button>ADD TO BAG</button>
+                    <button  mat-flat-button>WISHLIST</button>
+                </div>
+                <div *ngFor="let cart of cartItem">
+                    <div *ngIf="!flag" class="cart-buttons">
+                        <button id="cart-button" (click)="decCartItems(cart.quantityToBuy,cart._id)">-</button>
+                        <input id="button3" [(ngModel)]="cart.quantityToBuy" ngDefaultControl>
+                        <button id="cart-button" (click)="incCartItems(cart.quantityToBuy,cart._id)">+</button>
+                        <button id="button2" mat-flat-button >WISHLIST</button>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        <div id="box-1-3">
+            <h1>{{book.bookName}}</h1>
+            <h2>by {{book.author}}</h2>
+            <div class="rating" fxLayout="row" fxLayoutAlign="space-evenly center" >
+                <h3>4.5 <img src="../../assets/star.svg" alt=""></h3>
+                <h4>({{book.quantity}})</h4>
+            </div>
+            <div class="rating" fxLayout="row" fxLayoutAlign="space-evenly center" >
+                <h5>Rs.{{book.discountPrice}}</h5>
+                <h2><s>{{book.price}} </s></h2>
+            </div>
+           <p> _________________________________________________________</p>
+            <div class="para">
+                <h2><img src="../../assets/circle.svg"> Book Details</h2>
+            </div>
+            <div class="desc">
+                {{book.description}}
+            </div>
+            <p>_________________________________________________________</p>
+            
+            
+        </div>
+
+
+    </div>
+
+</div>

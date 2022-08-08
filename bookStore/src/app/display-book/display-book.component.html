@@ -1,97 +1,21 @@
-<!-- <div class="main">
-    <div class="every">
-        <div class="home-link" fxLayout="row">
-            <p id="link-p" routerLink="/dashboard/book">Home</p>
-            <p>/Book(01)</p>
-        </div>
-        <div class="main-top" fxLayout="row" fxLayoutAlign="start start">
-            <div class="main-image" fxLayout="row" fxLayoutAlign="start start">
-                <div class="image-small" fxLayoutAlign="center center">
-                    <img class="imga" src="../../assets/photo-1589998059171-988d887df646.jfif" alt="">
-                </div>
-                <div class="img-container" div fxLayout="column" fxLayoutAlign="start center">
-                    <div class="image" fxLayoutAlign="center center">
-                        <img class="imga" src="../../assets/photo-1589998059171-988d887df646.jfif" alt="">
-                    </div>
-                    <div class="buttons" fxLayoutAlign="space-between center">
-                        <button id="book-button" mat-flat-button>ADD TO CART</button>
-                        <div class="quantity_update" fxLayout="row" fxLayoutAlign="space-between center">
-                            <button class="up-down-button" fxLayoutAlign="center center"></button>
-                            <input id="quantity-input" type="number">
-                            <button class="up-down-button" fxLayoutAlign="center center"></button>
-                        </div>
-                        <button id="book-button" mat-flat-button color="warn">WISHLIST</button>
-                    </div>
-                </div>
+<div class="main" fxLayout="column" fxLayoutAlign="start start">
+    <div class="main-book" fxLayout="row wrap" fxLayoutAlign="start start">
+        <div class="book" fxLayout="column" *ngFor="let book of childMessage" (click)="book_path(book._id)">
+            <div class="image-book" fxLayout="column" fxLayoutAlign="center center">
+                <img id="book-image" src="../../assets/book.png" alt="">
             </div>
-            <div class="book-elements">
-                <div class="book-main">
-                    <h1>Book Name</h1>
-                    <h3>By Author</h3>
-                    <div class="rating" fxLayout="row" fxLayoutAlign="space-between center">
-                        <div class="rate__" fxLayout="row" fxLayoutAlign="space-around center">
-                            <img id="star" src="../../assets/star.svg" alt="">
-                        </div>
-                        <h4 style="margin:0px;"></h4>
+            <div class="book-detail">
+                <h4 class="book-elements">{{book.bookName}}</h4>
+                <h6 class="book-elements">By {{book.author}}</h6>
+                <div class="rating" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div class="rate" fxLayout="row" fxLayoutAlign="space-around center">
+                    4.5
+                    <img id="star" src="../../assets/star.svg" alt="">
                     </div>
-                    <h1>Rs.</h1>
+                    <h6 style="margin:0px;">{{book.quantity}}</h6>
                 </div>
-                <div class="book-details">
-                    <p id="book-ele">Book Details:</p>
-                    <p id="book-ele">Description</p>
-                </div>
-                <h2 id="customer-review">Customer Review</h2>
-                <div class="feedback">
-
-                    <div class="rate" fxLayout="row">
-                        <div class="rate1">★</div>
-                        <div class="rate2">★</div>
-                        <div class="rate3">★</div>
-                        <div class="rate4">★</div>
-                        <div class="rate5">★</div>
-                    </div>
-                    <div class="input-submit">
-                        <input type="text" placeholder="Write your reviews here" class="review-input">
-                    </div>
-                    <div class="button-container" fxLayoutAlign="end end">
-                        <button id="matbutton" mat-flat-button>SUBMIT</button>
-                    </div>
-                </div>
-                <div class="reviews" >
-                    <div>
-                        <h3 id="cus-name">Nikhil</h3>
-                        <div class="star-rating">
-                            <label id="check">★</label>
-                            <label id="not-check">★</label>
-                        </div>
-                        <h5>Description</h5>
-                    </div>
-                </div>
+                <h5 class="book-elements">Rs. {{book.price}}</h5>
             </div>
         </div>
-    </div>
-
-</div> -->
-
-<div class="main">
-    <div id="heading1">
-        <h1>Home</h1>
-        <h1>/Book(01)</h1>
-    </div>
-    <div class="box1" fxLayout="row" fxLayoutAlign="start start">
-        <div id="box-1-1">
-
-        </div>
-        <div id="box-1-2">
-            <h1>Hi</h1>
-            <div fxLayout="row" fxLayoutAlign="start end" >
-                <button  mat-flat-button>ADD TO BAG</button>
-                <button  mat-flat-button>WISHLIST</button>
-            </div>
-        </div>
-        <div id="box-1-3">
-
-        </div>
-
     </div>
 </div>

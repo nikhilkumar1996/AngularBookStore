@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../services/bookservice/book.service';
 import { CartService } from '../services/cartservice/cart.service';
+import { WishlistService } from '../services/wishlistservice/wishlist.service';
 
 @Component({
   selector: 'app-book-details',
@@ -17,16 +18,16 @@ export class BookDetailsComponent implements OnInit {
   cartItems:any;
   cartItem:any;
   cartId:any;
-
+  cartQuantity:any;
   
   
-  constructor(private route:ActivatedRoute,private books:BookService,private cart:CartService) { }
+  constructor(private route:ActivatedRoute,private books:BookService,private cart:CartService,private wishlist:WishlistService) { }
   
   ngOnInit(): void {
     this.get_book_details()
-    console.log(this.book_details)
     this.book = this.route.snapshot.params['data']
     this.getCartItems()
+    
     
   }
 
@@ -46,11 +47,12 @@ export class BookDetailsComponent implements OnInit {
   }
 
   addToCart(id:any){
-    this.flag=false
+    
     console.log('Add to Cart Api Calling')
     let data={}
     this.cart.add_cart(data,id).subscribe((res:any)=>{  
       console.log(res)
+      this.flag=false
     })
   }
   getCartItems(){
@@ -62,6 +64,22 @@ export class BookDetailsComponent implements OnInit {
         return obj.product_id._id === this.book
       })
       console.log(this.cartItem)
+      
+      this.cartId=this.cartItem[0]._id
+      console.log(this.cartId)
+      
+      this.cartQuantity=this.cartItem[0].quantityToBuy
+      console.log(this.cartQuantity)
+      
+    })
+  }
+  addWishlist(prod_id:any){
+    console.log('Add to WishList Api Calling')
+    let data={
+      
+    }
+    this.wishlist.addWishlist(data,prod_id).subscribe((res:any)=>{
+      console.log(res)
     })
   }
   
@@ -72,7 +90,7 @@ export class BookDetailsComponent implements OnInit {
     }
     this.cart.update_cart(data,cart_id).subscribe((res:any)=>{
         console.log(res)
-        this.getCartItems()
+        
     })
   }
 
@@ -86,7 +104,7 @@ export class BookDetailsComponent implements OnInit {
     }
     this.cart.update_cart(data,cart_id).subscribe((res:any)=>{
       console.log(res)
-      this.getCartItems()
+      
   })
   }
 }

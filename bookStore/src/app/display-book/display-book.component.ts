@@ -16,7 +16,6 @@ export class DisplayBookComponent implements OnInit {
 
   book_path(data:any){
     this.book_details=data
-    console.log(this.book_details)
     this.route.navigateByUrl('dashboard/book/'+data)
   }
 }

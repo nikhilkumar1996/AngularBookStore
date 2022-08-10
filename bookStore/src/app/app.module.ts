@@ -26,6 +26,8 @@ import { WjInputModule } from '@grapecity/wijmo.angular2.input';
 import { GetallbooksComponent } from './getallbooks/getallbooks.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { CartComponent } from './cart/cart.component';
+import { OrderComponent } from './order/order.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CartComponent } from './cart/cart.component';
     BookDetailsComponent,
     DisplayBookComponent,
     GetallbooksComponent,
-    CartComponent
+    CartComponent,
+    OrderComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

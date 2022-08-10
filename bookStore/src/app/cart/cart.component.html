@@ -1,38 +1,101 @@
 <div class="main">
     <div class="main-box" fxLayout="column" fxLayoutAlign="start start" >
         <div class="box-1">
-            <h1>Home/</h1>
+            <h1 routerLink="/dashboard/books">Home/</h1>
             <h2>My Cart</h2>
         </div>
-        <div class="box-2" fxLayout="row" fxLayoutAlign="start start" >
+        <div class="box-2" fxLayout="row" fxLayoutAlign="start start">
             <div class="box-2-1">
                 <h1>My Cart(1)</h1>
-                <div fxLayout="row" fxLayoutAlign="space-between start" *ngFor="let cart of cartItems" >
+                <div fxLayout="row" fxLayoutAlign="space-between start" *ngFor="let cart of cartItems">
                     <div class="box-2-1-1">
-                        <img src="../../assets/book.png">
+                        <img src="../../assets/content.jfif">
                     </div>
-                    <div class="box-2-1-2">
+                    <div class="box-2-1-2" >
                         <h1>{{cart.product_id.bookName}}</h1>
                         <h2>by {{cart.product_id.author}}</h2>
                         <div class="price">
-                            <h1>{{cart.product_id.discountPrice}}</h1>
-                            <h2><s>{{cart.product_id.price}}</s></h2>
+                            <h3>{{cart.product_id.discountPrice}}</h3>
+                            <h2><s>Rs. {{cart.product_id.price}}</s></h2>
                         </div>
                         <div class="cart-buttons">
                             <button id="cart-button" (click)="decCartItems(cart.quantityToBuy,cart._id)">-</button>
                             <input id="button3" [(ngModel)]="cart.quantityToBuy">
                             <button id="cart-button" (click)="incCartItems(cart.quantityToBuy,cart._id)">+</button>
-                            <h1>Remove</h1>
+                            <button id="hover-remove"(click)="delCartItems(cart._id)"  mat-flat-button>Remove</button>
                         </div>
-                        
+                        <div *ngIf="!placeorderflag">
+                            <button id='button' mat-flat-button (click)="placeOrder(cart)">PLACE ORDER</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="box-2-2">
-                <button id='button' mat-flat-button>PLACE ORDER</button>
+
+        </div>
+        <div class="box-3">
+            <div *ngIf="!placeorderflag">
+                <h1>Address Details</h1>
+            </div>
+            <div class="address-details" *ngIf="placeorderflag">
+                <div class="address-complete" >
+                    <h2>Customer Details</h2>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                            <h3>Full Name</h3>
+                            <input class="text-input" type="text">
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                            <h3>Mobile Number</h3>
+                            <input class="text-input" type="number">
+                        </div>
+                    </div>
+                    <div class="address-div" fxLayout="column" fxLayoutAlign="center start">
+                        <h3>Address</h3>
+                        <input class="address-input" type="text">
+                    </div>
+                    <div class="address-div" fxLayout="row" fxLayoutAlign="space-between center">
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                            <h3>City</h3>
+                            <input class="text-input" type="text">
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center start">
+                            <h3>State</h3>
+                            <input class="text-input" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="button-box" fxLayoutAlign="end end" *ngIf="placeorderflag && !continueflag">
+                    <button id="button" mat-flat-button (click)="continue()">CONTINUE</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="box-4" >
+            <div class="address" *ngIf="!continueflag">
+                <h1>Order Summary</h1>
+            </div>
+            <div class="box-4-1" *ngIf="placeorderflag && continueflag">
+                    <h1>Order Summary</h1>
+                
+                <div fxLayout="row">
+                    <div>
+                        <img class="image-book" src="../../assets/content.jfif" alt="">
+                    </div>
+                    <div class="order-detail">
+                        <h2 >{{cartNo.product_id.bookName}}</h2>
+                        <h3 >by {{cartNo.product_id.author}} </h3>
+                        <div class="price">
+                            <h4>{{cartNo.product_id.discountPrice}}</h4>
+                            <h3><s>Rs.{{cartNo.product_id.price}}</s></h3>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="button-box" >
+                    <button id="button" mat-flat-button routerLink="/dashboard/order" (click)="confirmOrder(cartNo._id,cartNo.product_id.bookName,cartNo.quantityToBuy,cartNo.product_id.price)">CHECKOUT</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-

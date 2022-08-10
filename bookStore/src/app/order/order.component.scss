@@ -1,0 +1,93 @@
+.main{
+    // border: 2px solid red;
+    height: 75vh;
+    margin-top: 9%;
+    h1{
+        font-weight: 500;
+    }
+    p{
+        margin-top: 60px;
+        margin-left: 10px;
+        span{
+            margin-left: -40px;
+        }
+    }
+    .table{
+        margin-top: 60px;
+        border:1px solid rgb(167, 166, 166) ;
+        height:25vh;
+        width: 50vw;
+        display: flex;
+        align-items:flex-start;
+        flex-direction: column;
+        .row1{
+            border: 2px solid blue;
+            height: 25%;
+            width: 100%;
+            border:1px solid rgb(167, 166, 166) ;
+            background-color: rgb(240, 240, 240) ;
+            #row-heading{
+                display: flex;
+                justify-content:start;
+                flex-direction: row;
+                h1{
+                    font-weight: 500;
+                    font-size:medium;
+                    margin-left: 14%;
+                }
+                
+            }
+        }
+        .row2{
+           #row-heading1{
+            text-align: center;
+            display: flex;
+            justify-content:start;
+            flex-direction: row;
+            
+            h1{
+                
+                font-weight: 400;
+                font-size:medium;
+                margin-left: 4%;
+                margin-top: 4%;
+            }
+            h2{
+                font-weight: 400;
+                font-size:medium;
+                margin-left: 5%;
+                margin-top: 4%;
+            }
+            p{
+                margin-top: 5px;
+                font-size:medium;
+                font-weight:400;
+            }
+            hr{
+                width: 1px;
+                height: 113px;
+                margin-top: -1px;
+                margin-left: 10px;
+            }
+            
+           }
+        }
+    }
+    #button{
+        display: flex;
+        flex-direction: column;
+        align-items:flex-end;
+        background-color: rgb(118, 118, 207);
+        margin-top: 20%;
+        background-color:rgb(61, 61, 255) ;
+        margin-top: auto;
+        color: white;
+        .mat-flat-button{
+            display: flex;
+            flex-direction: column;
+            align-items:flex-end;
+            background-color:blue ;
+        }
+     
+    }
+}

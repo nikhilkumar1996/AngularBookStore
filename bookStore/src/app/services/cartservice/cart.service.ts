@@ -48,6 +48,6 @@ export class CartService {
         'Token': this.token
       })
     }
-    return this.http.deleteService('bookstore_user/cart_item_quantity/'+cart_id,true,header)
+    return this.http.deleteService('bookstore_user/remove_cart_item/'+cart_id,true,header)
   }
 }

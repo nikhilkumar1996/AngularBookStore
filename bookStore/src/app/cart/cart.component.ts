@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cartservice/cart.service';
+import { OrderService } from '../services/orderservice/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,7 +9,10 @@ import { CartService } from '../services/cartservice/cart.service';
 })
 export class CartComponent implements OnInit {
   cartItems:any;
-  constructor(private cart:CartService) { }
+  placeorderflag:any=false;
+  continueflag:any=false;
+  cartNo:any;
+  constructor(private cart:CartService,private order:OrderService ) { }
 
   ngOnInit(): void {
     this.displayCartItems()
@@ -29,12 +33,11 @@ export class CartComponent implements OnInit {
     }
     this.cart.update_cart(data,cart_id).subscribe((res:any)=>{
         console.log(res)
-        this.displayCartItems()
     })
   }
 
   decCartItems(quant:any,cart_id:any){
-    console.log('Dec Cart Items Api Callling')
+    console.log('Dec Cart Items Api Calling')
     if (quant<1){
       return
     }
@@ -43,7 +46,37 @@ export class CartComponent implements OnInit {
     }
     this.cart.update_cart(data,cart_id).subscribe((res:any)=>{
       console.log(res)
-      this.displayCartItems()
   })
   }
+  delCartItems(id:any){
+    console.log('Delete Cart Item Api Calling')
+    this.cart.delete_cart(id).subscribe((res:any)=>{
+      console.log(res)
+    })
+  }
+  confirmOrder(prod_id:any,prod_name:any,prod_quant:any,prod_price:any){
+    let data={
+      orders:[{
+
+        'product_id':prod_id,
+        'product_name':prod_name,
+        'product_quantity':prod_quant,
+        'product_price':prod_price,
+      }
+      ]
+    }
+    console.log('Order Api Calling')
+    this.order.createOrder(data).subscribe((res:any)=>{
+      console.log(res)
+    })
+  }
+  placeOrder(cart:any){
+    this.placeorderflag=true
+    this.cartNo=cart
+
+  }
+  continue(){
+    this.continueflag=true
+  }
+  
 }

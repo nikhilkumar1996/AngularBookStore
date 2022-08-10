@@ -1,8 +1,9 @@
 <div class="main" fxLayout="column" fxLayoutAlign="start start">
+    <h1>Books</h1>
     <div class="main-book" fxLayout="row wrap" fxLayoutAlign="start start">
         <div class="book" fxLayout="column" *ngFor="let book of childMessage" (click)="book_path(book._id)">
             <div class="image-book" fxLayout="column" fxLayoutAlign="center center">
-                <img id="book-image" src="../../assets/book.png" alt="">
+                <img id="book-image" src="../../assets/content.jfif" alt="">
             </div>
             <div class="book-detail">
                 <h4 class="book-elements">{{book.bookName}}</h4>

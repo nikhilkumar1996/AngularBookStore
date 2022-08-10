@@ -21,6 +21,6 @@ export class HttpService {
     return this.http.put(this.Baseurl+url,data,token && httpOptions)
   }
   deleteService(url:string,token:boolean=false,httpOptions:any){
-    return this.http.get(this.Baseurl+url,token && httpOptions)
+    return this.http.delete(this.Baseurl+url,token && httpOptions)
   }
 }

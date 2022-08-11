@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./display-book.component.scss']
 })
 export class DisplayBookComponent implements OnInit {
-  book_details:any;
   @Input() childMessage: any;
   constructor(private route:Router) { }
 
@@ -15,7 +14,6 @@ export class DisplayBookComponent implements OnInit {
   }
 
   book_path(data:any){
-    this.book_details=data
     this.route.navigateByUrl('dashboard/book/'+data)
   }
 }

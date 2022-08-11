@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../services/bookservice/book.service';
 import { CartService } from '../services/cartservice/cart.service';
+import { CustomerService } from '../services/customer/customer.service';
 import { WishlistService } from '../services/wishlistservice/wishlist.service';
 
 @Component({
@@ -10,101 +11,141 @@ import { WishlistService } from '../services/wishlistservice/wishlist.service';
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent implements OnInit {
-  
-  book:any;
-  bookArray:any;
-  book_details:any;
-  flag:any=true;
-  cartItems:any;
-  cartItem:any;
-  cartId:any;
-  cartQuantity:any;
-  
-  
-  constructor(private route:ActivatedRoute,private books:BookService,private cart:CartService,private wishlist:WishlistService) { }
-  
+
+  book: any;
+  bookArray: any;
+  book_details: any;
+  flag: any = true;
+  cartItems: any;
+  cartItem: any;
+  cartId: any;
+  cartQuantity: any;
+  comment:any;
+  user_comments:any;
+  rating:any;
+
+  selectedRating = 0;
+  stars = [1,2,3,4,5];
+
+
+  constructor(private route: ActivatedRoute, private books: BookService, private cart: CartService, private wishlist: WishlistService,private customer: CustomerService) { }
+
   ngOnInit(): void {
     this.get_book_details()
     this.book = this.route.snapshot.params['data']
-    this.getCartItems()
-    
-    
+
   }
 
-  reloadCurrentPage() {
-    window.location.reload();
-   } 
-  
-  get_book_details(){
+  get_book_details() {
     console.log('book details Api calling')
 
-    this.books.getAllBooks().subscribe((res:any)=>{
-      this.bookArray=res.result
-      this.book_details=this.bookArray.filter((obj:any)=>{
+    this.books.getAllBooks().subscribe((res: any) => {
+      this.bookArray = res.result
+      // console.log(this.bookArray)
+      this.book_details = this.bookArray.filter((obj: any) => {
         return obj._id === this.book
       })
+      console.log(this.book_details)
     })
   }
 
-  addToCart(id:any){
-    
+  addToCart(id: any) {
+
     console.log('Add to Cart Api Calling')
-    let data={}
-    this.cart.add_cart(data,id).subscribe((res:any)=>{  
+    let data = {}
+    this.cart.add_cart(data, id).subscribe((res: any) => {
       console.log(res)
-      this.flag=false
+      this.flag = false
+      this.getCartItems()
     })
+    
   }
-  getCartItems(){
+  getCartItems() {
     console.log('Display Cart Items Api Calling')
-    this.cart.display_cart().subscribe((res:any)=>{
+    this.cart.display_cart().subscribe((res: any) => {
       console.log(res)
       this.cartItems = res.result
-      this.cartItem =  this.cartItems.filter((obj:any)=>{
+      this.cartItem = this.cartItems.filter((obj: any) => {
         return obj.product_id._id === this.book
       })
       console.log(this.cartItem)
-      
-      this.cartId=this.cartItem[0]._id
-      console.log(this.cartId)
-      
-      this.cartQuantity=this.cartItem[0].quantityToBuy
-      console.log(this.cartQuantity)
-      
+      this.cartId = this.cartItem[0]._id
+      this.cartQuantity = this.cartItem[0].quantityToBuy
+
+
     })
   }
-  addWishlist(prod_id:any){
+  addWishlist(prod_id: any) {
     console.log('Add to WishList Api Calling')
-    let data={
-      
+    let data = {
+
     }
-    this.wishlist.addWishlist(data,prod_id).subscribe((res:any)=>{
+    this.wishlist.addWishlist(data, prod_id).subscribe((res: any) => {
       console.log(res)
+      this.getCartItems()
+      
     })
+   
   }
-  
-  incCartItems(quant:any,cart_id:any){
+
+  incCartItems(quant: any, cart_id: any) {
     console.log('Inc Cart Items Api Calling')
-    let data={
-      "quantityToBuy": quant+1
+    let data = {
+      "quantityToBuy": quant + 1
     }
-    this.cart.update_cart(data,cart_id).subscribe((res:any)=>{
-        console.log(res)
-        
+    this.cart.update_cart(data, cart_id).subscribe((res: any) => {
+      console.log(res)
+
     })
   }
 
-  decCartItems(quant:any,cart_id:any){
+  decCartItems(quant: any, cart_id: any) {
     console.log('Dec Cart Items Api Callling')
-    if (quant<1){
+    if (quant < 1) {
       return
     }
     let data = {
-      "quantityToBuy": quant-1
+      "quantityToBuy": quant - 1
     }
-    this.cart.update_cart(data,cart_id).subscribe((res:any)=>{
+    this.cart.update_cart(data, cart_id).subscribe((res: any) => {
       console.log(res)
-      
-  })
+
+    })
   }
+  addRating(value:any){
+    this.rating=value
+    console.log('RATING',this.rating)
+  }
+  addComment(prod_id:any){
+    let data={
+      'comment':this.comment,
+      'rating':this.rating,
+    }
+    this.customer.addFeedback(data,prod_id).subscribe((res:any)=>{
+      console.log(res)
+      this.showFeedbacks(prod_id)
+      for(let i of this.user_comments){
+        this.stars=this.stars.slice(0,i.rating-1)
+        
+  
+      }
+      return this.stars
+    })
+  }
+  showFeedbacks(prod_id:any){
+    console.log('ID',prod_id)
+    console.log('Get all Feedbacks')
+    this.customer.getFeedback(prod_id).subscribe((res:any)=>{
+      console.log(res)
+      this.user_comments=res.result
+    })
+  }
+  displayRating(){
+    for(let i of this.user_comments){
+      this.stars=this.stars.slice(0,i.rating-1)
+
+    }
+    
+  }
+  
 }

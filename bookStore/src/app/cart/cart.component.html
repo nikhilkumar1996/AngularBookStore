@@ -6,7 +6,7 @@
         </div>
         <div class="box-2" fxLayout="row" fxLayoutAlign="start start">
             <div class="box-2-1">
-                <h1>My Cart(1)</h1>
+                <h1>My Cart</h1>
                 <div fxLayout="row" fxLayoutAlign="space-between start" *ngFor="let cart of cartItems">
                     <div class="box-2-1-1">
                         <img src="../../assets/content.jfif">
@@ -24,11 +24,12 @@
                             <button id="cart-button" (click)="incCartItems(cart.quantityToBuy,cart._id)">+</button>
                             <button id="hover-remove"(click)="delCartItems(cart._id)"  mat-flat-button>Remove</button>
                         </div>
-                        <div *ngIf="!placeorderflag">
-                            <button id='button' mat-flat-button (click)="placeOrder(cart)">PLACE ORDER</button>
-                        </div>
+                        
 
                     </div>
+                </div>
+                <div *ngIf="!placeorderflag">
+                    <button id='button' mat-flat-button (click)="placeOrder()">PLACE ORDER</button>
                 </div>
             </div>
 
@@ -52,16 +53,16 @@
                     </div>
                     <div class="address-div" fxLayout="column" fxLayoutAlign="center start">
                         <h3>Address</h3>
-                        <input class="address-input" type="text">
+                        <input class="address-input" type="text" [(ngModel)]="address">
                     </div>
                     <div class="address-div" fxLayout="row" fxLayoutAlign="space-between center">
                         <div fxLayout="column" fxLayoutAlign="center start">
                             <h3>City</h3>
-                            <input class="text-input" type="text">
+                            <input class="text-input" type="text" [(ngModel)]="city">
                         </div>
                         <div fxLayout="column" fxLayoutAlign="center start">
                             <h3>State</h3>
-                            <input class="text-input" type="text">
+                            <input class="text-input" type="text" [(ngModel)]="state">
                         </div>
                     </div>
                 </div>
@@ -78,22 +79,22 @@
             <div class="box-4-1" *ngIf="placeorderflag && continueflag">
                     <h1>Order Summary</h1>
                 
-                <div fxLayout="row">
+                <div fxLayout="row" *ngFor="let cart of cartItems">
                     <div>
                         <img class="image-book" src="../../assets/content.jfif" alt="">
                     </div>
                     <div class="order-detail">
-                        <h2 >{{cartNo.product_id.bookName}}</h2>
-                        <h3 >by {{cartNo.product_id.author}} </h3>
+                        <h2 >{{cart.product_id.bookName}}</h2>
+                        <h3 >by {{cart.product_id.author}} </h3>
                         <div class="price">
-                            <h4>{{cartNo.product_id.discountPrice}}</h4>
-                            <h3><s>Rs.{{cartNo.product_id.price}}</s></h3>
+                            <h4>{{cart.product_id.discountPrice}}</h4>
+                            <h3><s>Rs.{{cart.product_id.price}}</s></h3>
                         </div>
                     </div>
 
                 </div>
                 <div class="button-box" >
-                    <button id="button" mat-flat-button routerLink="/dashboard/order" (click)="confirmOrder(cartNo._id,cartNo.product_id.bookName,cartNo.quantityToBuy,cartNo.product_id.price)">CHECKOUT</button>
+                    <button id="button" mat-flat-button routerLink="/dashboard/order" (click)="confirmOrder()">CHECKOUT</button>
                 </div>
             </div>
         </div>

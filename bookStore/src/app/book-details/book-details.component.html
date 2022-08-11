@@ -1,7 +1,7 @@
 <div class="main">
     <div id="heading1">
         <h1 routerLink="/dashboard/books">Home</h1>
-        <h1>/Book(01)</h1>
+        <h1>/Book</h1>
     </div>
     <div class="box1" fxLayout="row" fxLayoutAlign="start start" *ngFor="let book of book_details">
         <div id="box-1-1">
@@ -10,21 +10,19 @@
         <div id="box-1-2">
             <img src="../../assets/content.jfif">
             <div>
-                <div *ngIf="flag" class="button1" >
+                <div *ngIf="flag" class="button1">
                     <button mat-flat-button (click)="addToCart(book._id)">ADD TO BAG</button>
-                    <button mat-flat-button (click)=" addWishlist(book._id)">WISHLIST</button>
+                    <button mat-flat-button (click)=" addWishlist(book._id)"
+                        routerLink="/dashboard/wishlist">WISHLIST</button>
                 </div>
 
                 <div *ngIf="!flag" class="cart-buttons">
                     <button id="cart-button" (click)="decCartItems(cartQuantity,cartId)">-</button>
                     <input id="button3" [(ngModel)]="cartQuantity" ngDefaultControl>
                     <button id="cart-button" (click)="incCartItems(cartQuantity,cartId)">+</button>
-                    <button id="button2" mat-flat-button (click)=" addWishlist(book._id)">WISHLIST</button>
+                    <button id="button2" mat-flat-button (click)=" addWishlist(book._id)"
+                        routerLink="/dashboard/wishlist">WISHLIST</button>
                 </div>
-
-
-
-
             </div>
         </div>
         <div id="box-1-3">
@@ -38,19 +36,42 @@
                 <h5>Rs.{{book.discountPrice}}</h5>
                 <h2><s>{{book.price}} </s></h2>
             </div>
-            <p> _________________________________________________________</p>
+            <p> ______________________________________________________________</p>
             <div class="para">
                 <h2><img src="../../assets/circle.svg"> Book Details</h2>
             </div>
             <div class="desc">
                 {{book.description}}
             </div>
-            <p>_________________________________________________________</p>
+            <p>_______________________________________________________________</p>
+            <div class="customer-details">
+                <h1>Customer Feedback</h1>
+                <div class="feedback">
+                    <h1>Overall Rating</h1>
+                    <div id="image">
+                        <div (click)="addRating(1)"><img src="../../assets/star_feedback.svg"></div>
+                        <div (click)="addRating(2)"><img src="../../assets/star_feedback.svg"></div>
+                        <div (click)="addRating(3)"><img src="../../assets/star_feedback.svg"></div>
+                        <div (click)="addRating(4)"><img src="../../assets/star_feedback.svg"></div>
+                        <div (click)="addRating(5)"><img src="../../assets/star_feedback.svg"></div>
+                    </div>
+                    <input placeholder='Write your reviews' type="text" id="text-field" [(ngModel)]="comment">
+                    <button mat-flat-button id="button" (click)="addComment(book._id)" onclick="document.getElementById('text-field').value=''">Submit</button>
+                </div>
+                <div *ngFor="let comment of user_comments" >
+                    <!-- <div id="customer-feeds" >
+                        <h1>{{comment.user_id.fullName}}</h1>
+                    </div>
+                    <div *ngFor="let star of stars" id="stars">
+                        <div><img src="../../assets/star_feedback.svg"></div>
+                    </div> -->
+                </div>
+                
+
+            </div>
 
 
         </div>
-
-
     </div>
 
 </div>

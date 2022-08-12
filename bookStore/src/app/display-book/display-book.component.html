@@ -1,7 +1,16 @@
 <div class="main" fxLayout="column" fxLayoutAlign="start start">
-    <h1>Books</h1>
+    <div class="sort" >
+        <h1>Books</h1>
+        <div class="dropdown">
+            <div id="sort">Sort By</div>
+            <div class="dropdown-content">
+                <span class="dropdown-item" (click)="sort_by(price_low)">Price: Low to High</span>
+                <span class="dropdown-item" (click)="sort_by(price_high)">Price: High to Low</span>
+            </div>
+        </div>
+    </div>
     <div class="main-book" fxLayout="row wrap" fxLayoutAlign="start start">
-        <div class="book" fxLayout="column" *ngFor="let book of childMessage" (click)="book_path(book._id)">
+        <div class="book" fxLayout="column" *ngFor="let book of childMessage| filterpipe:filterstring:sorting | paginate:{ itemsPerPage: count, currentPage: p }" (click)="book_path(book._id)">
             <div class="image-book" fxLayout="column" fxLayoutAlign="center center">
                 <img id="book-image" src="../../assets/content.jfif" alt="">
             </div>
@@ -10,13 +19,17 @@
                 <h6 class="book-elements">By {{book.author}}</h6>
                 <div class="rating" fxLayout="row" fxLayoutAlign="space-between center">
                     <div class="rate" fxLayout="row" fxLayoutAlign="space-around center">
-                    4.5
-                    <img id="star" src="../../assets/star.svg" alt="">
+                        4.5
+                        <img id="star" src="../../assets/star.svg" alt="">
                     </div>
                     <h6 style="margin:0px;">{{book.quantity}}</h6>
                 </div>
                 <h5 class="book-elements">Rs. {{book.price}}</h5>
             </div>
         </div>
+       
+    </div>
+    <div class="text-right">
+        <pagination-controls previousLabel="<" nextLabel=">" (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>

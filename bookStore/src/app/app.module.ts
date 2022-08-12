@@ -16,18 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { DisplayBookComponent } from './display-book/display-book.component';
-import { WjCoreModule } from '@grapecity/wijmo.angular2.core';
-
-import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
-
-import { WjGaugeModule } from '@grapecity/wijmo.angular2.gauge';
-
-import { WjInputModule } from '@grapecity/wijmo.angular2.input';
 import { GetallbooksComponent } from './getallbooks/getallbooks.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { FilterpipePipe } from './filterpipe/filterpipe.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -40,7 +35,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     GetallbooksComponent,
     CartComponent,
     OrderComponent,
-    WishlistComponent
+    WishlistComponent,
+    FilterpipePipe
   ],
   imports: [
     BrowserModule,
@@ -53,11 +49,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    WjCoreModule,
-    WjGridModule,
-    WjInputModule,
-    WjGaugeModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxPaginationModule
+
 
   ],
   providers: [],

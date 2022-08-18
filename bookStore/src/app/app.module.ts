@@ -23,6 +23,10 @@ import { OrderComponent } from './order/order.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { FilterpipePipe } from './filterpipe/filterpipe.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { RatingModule } from 'ngx-bootstrap/rating';
+
+
+
 
 @NgModule({
   declarations: [
@@ -36,7 +40,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CartComponent,
     OrderComponent,
     WishlistComponent,
-    FilterpipePipe
+    FilterpipePipe,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +54,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     MatRadioModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
+    RatingModule
 
   ],
   providers: [],

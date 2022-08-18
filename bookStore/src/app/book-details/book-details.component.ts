@@ -23,9 +23,7 @@ export class BookDetailsComponent implements OnInit {
   comment:any;
   user_comments:any;
   rating:any;
-
-  selectedRating = 0;
-  stars = [1,2,3,4,5];
+  submitted:boolean=false;
 
 
   constructor(private route: ActivatedRoute, private books: BookService, private cart: CartService, private wishlist: WishlistService,private customer: CustomerService) { }
@@ -114,7 +112,7 @@ export class BookDetailsComponent implements OnInit {
   }
   addRating(value:any){
     this.rating=value
-    console.log('RATING',this.rating)
+    console.log('POS_RATING',this.rating)
   }
   addComment(prod_id:any){
     let data={
@@ -124,14 +122,10 @@ export class BookDetailsComponent implements OnInit {
     this.customer.addFeedback(data,prod_id).subscribe((res:any)=>{
       console.log(res)
       this.showFeedbacks(prod_id)
-      for(let i of this.user_comments){
-        this.stars=this.stars.slice(0,i.rating-1)
-        
-  
-      }
-      return this.stars
     })
+    this.submitted = true
   }
+
   showFeedbacks(prod_id:any){
     console.log('ID',prod_id)
     console.log('Get all Feedbacks')
@@ -140,12 +134,6 @@ export class BookDetailsComponent implements OnInit {
       this.user_comments=res.result
     })
   }
-  displayRating(){
-    for(let i of this.user_comments){
-      this.stars=this.stars.slice(0,i.rating-1)
-
-    }
-    
-  }
+  
   
 }

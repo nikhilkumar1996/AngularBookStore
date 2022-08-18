@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/userservice/user.service';
 
 @Component({
@@ -9,10 +9,10 @@ import { UserService } from '../services/userservice/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm !: FormGroup;
+  registerForm !: UntypedFormGroup;
   submitted = false;
 
-  constructor(private fb:FormBuilder,private user:UserService) { }
+  constructor(private fb:UntypedFormBuilder,private user:UserService) { }
 
   ngOnInit(): void {
     this.registerForm=this.fb.group({

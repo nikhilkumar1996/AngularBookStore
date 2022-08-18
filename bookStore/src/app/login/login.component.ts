@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/userservice/user.service';
 
@@ -12,12 +12,12 @@ export class LoginComponent implements OnInit {
 
   flag:any=true
   bcolor:string="#757373"
-  loginForm !: FormGroup;
+  loginForm !: UntypedFormGroup;
   submitted = false;
   token:any;
 
 
-  constructor(private user:UserService, private fb:FormBuilder,private route:Router) { }
+  constructor(private user:UserService, private fb:UntypedFormBuilder,private route:Router) { }
 
   ngOnInit(): void {
     this.loginForm=this.fb.group({

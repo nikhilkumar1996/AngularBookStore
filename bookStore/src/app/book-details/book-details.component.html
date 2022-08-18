@@ -57,14 +57,19 @@
                     </div>
                     <input placeholder='Write your reviews' type="text" id="text-field" [(ngModel)]="comment">
                     <button mat-flat-button id="button" (click)="addComment(book._id)" onclick="document.getElementById('text-field').value=''">Submit</button>
+
+
                 </div>
-                <div *ngFor="let comment of user_comments" >
-                     <!-- <div id="customer-feeds" >
-                        <h1>{{comment.user_id.fullName}}</h1>
+                <div *ngIf="submitted" >
+                    <div id="customer-feeds" *ngFor="let com of user_comments">
+                        <h1>{{com.user_id.fullName}}</h1>
+                        <div class="star">
+                            <rating  style="color: #ffc700;font-size: 40px;" [(ngModel)]="com.rating" [max]="5" [readonly]="false">
+                            </rating>
+                        </div>
+                        <h2>{{com.comment}}</h2>
                     </div> 
-                    <div *ngFor="let star of stars" id="stars">
-                        <div><img src="../../assets/star_feedback.svg"></div>
-                    </div>  -->
+                    
                 </div>
                 
 

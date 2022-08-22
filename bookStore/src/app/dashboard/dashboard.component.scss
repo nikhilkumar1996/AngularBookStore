@@ -108,6 +108,10 @@
     margin-left: -60%;
   }
 }
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: -3px;
+  left: 40px;
+}
 
 
 @media screen and (max-width: 1300px) {

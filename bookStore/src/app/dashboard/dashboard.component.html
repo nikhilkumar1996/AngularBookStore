@@ -14,10 +14,10 @@
             <div fxLayout="row">
                 <div class="account-icon" fxLayout="column" fxLayoutAlign="center center">
                     <img id="cart-image" src="../../assets/person.svg" alt="">
-                    <p>Profile</p>
+                    <p routerLink="/dashboard/profile">Profile</p>
                 </div>
-                <div class="cart-icon" fxLayout="column" fxLayoutAlign="center center">
-                    <img id="cart-image" src="../../assets/shopping_cart.svg" alt="">
+                <div class="cart-icon" fxLayout="column" fxLayoutAlign="center center" matBadge ={{cart_details.length}} matBadgeColor="warn" matBadgeOverlap="false"  matBadgePosition="after" >
+                    <div ><img id="cart-image"  src="../../assets/shopping_cart.svg" alt=""></div>
                     <p routerLink="/dashboard/cart">Cart</p>
                 </div>
             </div>

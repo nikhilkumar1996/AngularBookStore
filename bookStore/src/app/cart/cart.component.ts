@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cartservice/cart.service';
 import { CustomerService } from '../services/customer/customer.service';
+import { DataService } from '../services/dataservice/data.service';
 import { OrderService } from '../services/orderservice/order.service';
 
 @Component({
@@ -15,20 +16,34 @@ export class CartComponent implements OnInit {
   address:string='';
   state:string='';
   city:string='';
+  user_details:any;
 
 
-  constructor(private cart: CartService, private order: OrderService,private customer:CustomerService) { }
+  constructor(private cart: CartService, private order: OrderService,private customer:CustomerService,private data:DataService) { }
 
   ngOnInit(): void {
+    // this.data.currentMessage.subscribe((mes:any)=>{
+    //   this.user_details=mes
+    //   console.log('USER_DETAILS',this.user_details)
+    // })
     this.displayCartItems()
+    // console.log(this.user_details)
   }
 
   displayCartItems() {
     console.log('Display Cart Items Api Calling')
     this.cart.display_cart().subscribe((res: any) => {
       console.log(res)
+
       this.cartItems = res.result
       console.log(this.cartItems)
+
+      this.user_details = this.cartItems[0].user_id
+      // console.log('USER',this.user_details)
+
+      var a =this.data.changeMessage(this.user_details)
+      // console.log('CART_ITEMS', a)
+
     })
   }
   incCartItems(quant: any, cart_id: any) {

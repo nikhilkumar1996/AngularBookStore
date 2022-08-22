@@ -64,7 +64,7 @@
                     <div id="customer-feeds" *ngFor="let com of user_comments">
                         <h1>{{com.user_id.fullName}}</h1>
                         <div class="star">
-                            <rating  style="color: #ffc700;font-size: 40px;" [(ngModel)]="com.rating" [max]="5" [readonly]="false">
+                            <rating  style="color: #ffc700;font-size: 40px;" [(ngModel)]="com.rating" [max]="5" [readonly]="true">
                             </rating>
                         </div>
                         <h2>{{com.comment}}</h2>

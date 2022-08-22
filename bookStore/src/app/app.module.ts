@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -24,6 +23,10 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { FilterpipePipe } from './filterpipe/filterpipe.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { PersonalDetailsComponent } from './personal-details/personal-details.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { DemoComponent } from './demo/demo.component';
+import { Demo2Component } from './demo2/demo2.component';
 
 
 
@@ -41,6 +44,9 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     OrderComponent,
     WishlistComponent,
     FilterpipePipe,
+    PersonalDetailsComponent,
+    DemoComponent,
+    Demo2Component,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,8 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     HttpClientModule,
     MatRadioModule,
     NgxPaginationModule,
-    RatingModule
+    RatingModule,
+    MatBadgeModule
 
   ],
   providers: [],

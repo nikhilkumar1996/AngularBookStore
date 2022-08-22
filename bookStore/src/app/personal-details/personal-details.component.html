@@ -1,0 +1,81 @@
+<div class="main">
+    <div class="main-top">
+        <div class="home-link" fxLayout="row">
+            <p id="link-p" routerLink="/dashboard/books">Home</p>
+            <p>/Profile</p>
+        </div>
+        <div class="profile">
+            <div class="heading-button" fxLayout="row" fxLayoutAlign="space-between end">
+                <div class="heading" fxLayout="row" fxLayoutAlign="start end">
+                    <h1 id="heading-h1">Personal Details</h1>
+                    <h5 class="heading-h5" (click)="pedit()" *ngIf="!pflag">Edit</h5>
+                    <h5 class="heading-h5" (click)="pcancel()" *ngIf="pflag">Cancel</h5>
+                </div>
+                <div class="button-container" fxLayoutAlign="end end" *ngIf="pflag">
+                    <button id="matbutton" mat-flat-button >Save</button>
+                </div>
+            </div>
+            <div class="form" *ngIf="!pflag">
+                <p class="profile-p">Full Name</p>
+                <input type="text" class="profile-input-dis" [(ngModel)]="user_details.fullName" readonly>
+                <p class="profile-p">Email Id</p>
+                <input type="text" class="profile-input-dis" [(ngModel)]="user_details.email" readonly>
+                <p class="profile-p">Mobile Number</p>
+                <input type="text" class="profile-input-dis" [(ngModel)]="user_details.phone" readonly>
+            </div>
+            <div class="form" *ngIf="pflag">
+                <p class="profile-p">Full Name</p>
+                <input type="text" class="profile-input" [(ngModel)]="user_details.fullName">
+                <p class="profile-p">Email Id</p>
+                <input type="text" class="profile-input" [(ngModel)]="user_details.email">
+                <p class="profile-p">Mobile Number</p>
+                <input type="text" class="profile-input" [(ngModel)]="user_details.phone">
+            </div>
+        </div>
+
+        <div class="profile">
+            <div class="heading-button" fxLayout="row" fxLayoutAlign="space-between end">
+                <div class="heading" fxLayout="row" fxLayoutAlign="start end">
+                    <div class="InColm">
+                        <h1 id="heading-h1">Address Details</h1>
+                        <h2>1.WORK</h2>
+                    </div>
+                    <h3 class="heading-h3" (click)="aedit()" *ngIf="!aflag">Edit</h3>
+                    <h3 class="heading-h3" (click)="acancel()" *ngIf="aflag">Cancel</h3>
+                </div>
+                <div class="save-button" fxLayoutAlign="end end" *ngIf="aflag">
+                    <button id="matbutton" mat-flat-button >Save</button>
+                </div>
+            </div>
+            <div class="form" *ngIf="!aflag">
+                <p class="profile-p">Address</p>
+                <input type="text" class="address-input-dis" [(ngModel)]="user_details.address[0].fullAddress" readonly>
+                <p class="profile-p">City/Town</p>
+                <div class="InRow">
+                    <input type="text" class="state-input-dis1" [(ngModel)]="user_details.address[0].city" readonly>
+                    <p class="state">State</p>
+                    <input type="text" class="state-input-dis2" [(ngModel)]="user_details.address[0].state" readonly>
+                </div>
+            </div>
+            <div class="form" *ngIf="aflag">
+                <p class="profile-p">Address</p>
+                <input type="text" class="address-input" [(ngModel)]="user_details.address[0].fullAddress">
+                <p class="profile-p">City/Town</p>
+                <div class="InRow">
+                    <input type="text" class="state-input1" [(ngModel)]="user_details.address[0].city">
+                    <p class="state">State</p>
+                    <input type="text" class="state-input2" [(ngModel)]="user_details.address[0].state">
+                </div>
+            </div>
+            <p class="profile-p">Type</p>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1">Home</mat-radio-button>
+                <mat-radio-button value="2">Work</mat-radio-button>
+                <mat-radio-button value="3">Other</mat-radio-button>  
+            </mat-radio-group>
+
+        </div>
+
+
+    </div>
+</div>

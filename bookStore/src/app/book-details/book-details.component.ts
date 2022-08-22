@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../services/bookservice/book.service';
 import { CartService } from '../services/cartservice/cart.service';
 import { CustomerService } from '../services/customer/customer.service';
+import { DataService } from '../services/dataservice/data.service';
 import { WishlistService } from '../services/wishlistservice/wishlist.service';
 
 @Component({
@@ -24,13 +25,16 @@ export class BookDetailsComponent implements OnInit {
   user_comments:any;
   rating:any;
   submitted:boolean=false;
+  cart_details:any;
 
 
-  constructor(private route: ActivatedRoute, private books: BookService, private cart: CartService, private wishlist: WishlistService,private customer: CustomerService) { }
+  constructor(private route: ActivatedRoute, private books: BookService, private cart: CartService, private wishlist: WishlistService,private customer: CustomerService,private data:DataService) { }
 
   ngOnInit(): void {
+   
     this.get_book_details()
     this.book = this.route.snapshot.params['data']
+    this.getCartItems()
 
   }
 
@@ -70,7 +74,8 @@ export class BookDetailsComponent implements OnInit {
       this.cartId = this.cartItem[0]._id
       this.cartQuantity = this.cartItem[0].quantityToBuy
 
-
+      var cart_no=this.data.changeCount(this.cartItems)
+      console.log(cart_no)
     })
   }
   addWishlist(prod_id: any) {
